@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <label for="products">Choose your product:</label>
+        <select name="product_id_pur" id="products">
+        {% for product in products %}
+        <option value="{{ product.product_id }}">{{ product.product_name }}</option>
+        {% endfor %}
+        <option value="Others">Other</option>
+        </select><br><br>
+
+        <input type="submit" name="check" value="Check stock">
+        <br><br>
+        <input type="text" name="customer_name" placeholder="enter your name"><br><br>
+        <input type="email" name="customer_email" placeholder="enter your email"><br><br>
+        <input type="number" name="quantity" placeholder="eneter the quantity you want"><br><br>
+        <textarea name="custom_order" rows="5" cols="33" placeholder="Enter name of product and details heere if you select products other than in the list"></textarea>
+        
+        <br><br>
+        <input type="submit" name="purchase">
+    </form>
+
+    <div>
+        <h3>About proudct: {{ description }}</h3>
+        <h2>Price of product: {{ price }}</h2>
+    </div>
+
+</body>
+</html>
